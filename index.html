@@ -2,21 +2,51 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>💬 คำคมสร้างแรงบันดาลใจ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎭 มาสค์ไรเดอร์ดีเคด</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #222;
+      color: white;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background: #e60012;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #ff0033;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>☀️ คำคมประจำวัน</h1>
-    <p id="quote">คลิกปุ่มด้านล่างเพื่อรับแรงบันดาลใจใหม่ๆ</p>
-    <button onclick="getQuote()">✨ รับคำคม</button>
+    <h1>🎭 มาสค์ไรเดอร์ดีเคด</h1>
+    <p>"โลกนี้ถูกสร้างขึ้นมาเพื่อถูกทำลาย!"</p>
+    <button onclick="playMusic()">▶️ เล่นเพลงเปิด</button>
+    <br><br>
+    <audio id="themeSong" src="decade_theme.mp3"></audio>
   </div>
-
+  
   <script>
-    async function getQuote() {
-      const res = await fetch('/.netlify/functions/quote');
-      const data = await res.json();
-      document.getElementById('quote').textContent = `“${data.quote}”`;
+    function playMusic() {
+      const audio = document.getElementById("themeSong");
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+        audio.currentTime = 0;
+      }
     }
   </script>
 </body>
